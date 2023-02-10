@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsFillCaretLeftFill } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 function MainListItem() {
     return (
@@ -13,7 +14,9 @@ function MainListItem() {
                 </div>
             </div>
             <div className='main-list-item-more'>
-                <BsFillCaretLeftFill />
+                <Link to="/group">
+                    <BsFillCaretLeftFill />
+                </Link>
             </div>
         </div>
     )

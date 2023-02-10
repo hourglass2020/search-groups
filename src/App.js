@@ -5,6 +5,7 @@ import MainLayout from './layouts/MainLayout';
 
 import './App.css';
 import SearchPage from './components/search/SearchPage';
+import GroupPage from './components/group/GroupPage';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchPage />
+      },
+      {
+        path: "group",
+        element: <GroupPage />
       }
     ]
   }
