@@ -9,3 +9,28 @@
   font-style: normal;
   font-display: swap;
 }
+
+.main-list::-webkit-scrollbar {
+  display: none;
+}
+
+.main-list-item p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.main-list-item h6 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.main-list-item-more {
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.main-list-item-more:hover {
+  background-color: #dfdfdf;
+}
