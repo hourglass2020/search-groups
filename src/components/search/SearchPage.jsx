@@ -29,7 +29,7 @@ function SearchPage() {
 
     return (
         <div className="row">
-            <div className="col-3 mt-4">
+            <div className="col-12 col-md-3 mt-4">
                 <h4>انتخاب گروه</h4>
                 <Card>
                     <Card.Body>
@@ -69,7 +69,7 @@ function SearchPage() {
                 </Card>
             </div>
             <div
-                className="col-9 d-flex flex-column justify-content-center align-items-center"
+                className="col-12 col-md-9 d-flex flex-column justify-content-center align-items-center"
             >
                 <div className="my-4 d-flex w-100 flex-column justify-content-end">
                     <div className="col-12 h-25">
@@ -90,7 +90,7 @@ function SearchPage() {
                     </div>
                 </div>
                 <div className="mt-3 w-100">
-                    <ListGroup variant="flush" className="main-list">
+                    <ListGroup variant="flush" className="main-list mt-4">
                         <ListGroup.Item>
                             <MainListItem />
                         </ListGroup.Item>

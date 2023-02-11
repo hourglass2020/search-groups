@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             <img
               src="/images/404.png"
               alt="404"
-              height={400}
+              height={304}
               className="mt-5"
             />
             <h4>صفحه موردنظر پیدا نشد.</h4>
