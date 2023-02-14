@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import LandingPage from "./components/landing/LandingPage";
@@ -6,6 +7,8 @@ import MainLayout from "./layouts/MainLayout";
 import "./App.css";
 import SearchPage from "./components/search/SearchPage";
 import GroupPage from "./components/group/GroupPage";
+import { getAllGroups, getAllTags } from './services/service';
+import { GroupContext } from './context/groupContext';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: "group",
+        path: "group/:groupSlug",
         element: <GroupPage />,
       },
       {
@@ -43,9 +46,36 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+
+  const [groups, setGroups] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: groupData } = await getAllGroups();
+        const { data: tagsData } = await getAllTags();
+
+        setGroups(groupData.data);
+        setTags(tagsData);
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <div dir="rtl">
-      <RouterProvider router={router} />
+      <GroupContext.Provider value={{
+        groups,
+        setGroups,
+        tags,
+        setTags
+      }}>
+        <RouterProvider router={router} />
+      </GroupContext.Provider>
     </div>
   );
 }

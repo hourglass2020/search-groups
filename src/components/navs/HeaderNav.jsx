@@ -6,8 +6,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 function HeaderNav() {
     const { pathname } = useLocation();
 
-    console.log(pathname)
-
     return (
         <Navbar bg="white" expand="lg">
             <Container >
