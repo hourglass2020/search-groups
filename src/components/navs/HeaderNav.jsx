@@ -1,11 +1,13 @@
-import React from 'react'
+import { useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 
+import AddGroupForm from './AddGroupForm';
 import SearchForm from './SearchForm';
 
 function HeaderNav() {
     const { pathname } = useLocation();
+    const [formShow, setFormShow] = useState(false)
 
     return (
         <Navbar bg="white" expand="lg">
@@ -30,9 +32,10 @@ function HeaderNav() {
                         <NavLink className={"nav-item nav-link"} to="/search">
                             لیست گروه ها
                         </NavLink>
-                        <NavLink className={"nav-item nav-link"}>
+                        <NavLink className={"nav-item nav-link"} onClick={() => setFormShow(true)}>
                             افزودن گروه
                         </NavLink>
+                        <AddGroupForm show={formShow} onHide={() => setFormShow(false)} />
                     </Nav>
                     {
                         (pathname === "/" || pathname === "/search") ? null :
