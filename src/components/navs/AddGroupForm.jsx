@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, Form, Modal, Row } from 'react-bootstrap'
+import { toast } from 'react-hot-toast'
 
 function AddGroupForm(props) {
+
     return (
         <div dir='rtl'>
-
             <Modal
                 {...props}
                 size='lg'
@@ -27,7 +28,10 @@ function AddGroupForm(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={props.onHide}>انصراف</Button>
-                    <Button onClick={props.onHide}>افزودن</Button>
+                    <Button onClick={() => {
+                        toast("درحال تکمیل سایت هستیم...", { icon: "🚀" });
+                        props.onHide()
+                    }}>افزودن</Button>
                 </Modal.Footer>
             </Modal>
         </div>

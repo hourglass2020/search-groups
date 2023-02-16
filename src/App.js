@@ -14,6 +14,7 @@ import NotFoundPage from "./components/NotFoundPage";
 import { GroupContext } from "./context/groupContext";
 
 import "./App.css";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,7 @@ function App() {
 
   return (
     <div dir="rtl">
+      <Toaster position="bottom-left" />
       <GroupContext.Provider
         value={{
           groups,
