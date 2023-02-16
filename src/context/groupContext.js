@@ -4,5 +4,8 @@ export const GroupContext = createContext({
     groups: [],
     setGroups: () => { },
     tags: [],
-    setTags: () => { }
+    setTags: () => { },
+    filteredGroups: [],
+    setFilteredGroups: () => { },
+    groupSearch: () => { }
 });

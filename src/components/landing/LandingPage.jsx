@@ -9,7 +9,7 @@ import LandingHeader from "./LandingHeader";
 import SearchForm from "../navs/SearchForm";
 
 function LandingPage() {
-    const { groups } = useContext(GroupContext);
+    const { filteredGroups } = useContext(GroupContext);
 
     return (
         <div className="d-flex flex-column justify-content-center">
@@ -31,7 +31,7 @@ function LandingPage() {
                         style={{ maxHeight: "30vh" }}
                         className="overflow-auto main-list"
                     >
-                        {groups.slice(0, 3).map((group) => (
+                        {filteredGroups.slice(0, 3).map((group) => (
                             <ListGroup.Item key={`group${group.slug}`}>
                                 <MainListItem
                                     name={group.name}

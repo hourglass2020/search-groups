@@ -12,11 +12,11 @@ import SearchForm from "../navs/SearchForm";
 import { isEmpty } from "lodash";
 
 function SearchPage() {
-    const { groups, tags } = useContext(GroupContext);
+    const { filteredGroups, tags } = useContext(GroupContext);
     const [active, setActive] = useState(1);
 
     let items = [];
-    for (let number = 1; number <= 5; number++) {
+    for (let number = 1; number <= 3; number++) {
         items.push(
             <Pagination.Item
                 key={number}
@@ -44,7 +44,7 @@ function SearchPage() {
                 </div>
                 <div className="mt-1 w-100">
                     <ListGroup variant="flush" className="main-list">
-                        {groups.map((group) => (
+                        {filteredGroups.map((group) => (
                             <ListGroup.Item key={`group${group.slug}`}>
                                 <MainListItem
                                     name={group.name}
@@ -56,7 +56,7 @@ function SearchPage() {
                         ))}
                     </ListGroup>
                 </div>
-                {isEmpty([groups]) ? null :
+                {isEmpty([filteredGroups]) ? null :
                     <Pagination dir="ltr" className="mt-4">
                         {items}
                     </Pagination>

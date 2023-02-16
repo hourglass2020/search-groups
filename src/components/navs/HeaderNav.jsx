@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import HeaderSearch from './SearchForm';
+import SearchForm from './SearchForm';
 
 function HeaderNav() {
     const { pathname } = useLocation();
@@ -36,7 +36,7 @@ function HeaderNav() {
                     </Nav>
                     {
                         (pathname === "/" || pathname === "/search") ? null :
-                            <HeaderSearch />
+                            <SearchForm />
                     }
                 </Navbar.Collapse>
             </Container>
