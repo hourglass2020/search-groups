@@ -8,7 +8,7 @@ function CategoriesColumn({ tags }) {
             <Card className="mb-4">
                 <Card.Body>
                     <ListGroup variant="flush">
-                        {tags.map((tag) => (
+                        {tags.slice(0, 15).map((tag) => (
                             <ListGroupItem key={`tag${tag.id}`}>
                                 <Form.Check type="checkbox" label={tag.title} />
                             </ListGroupItem>

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap';
-import { BsSearch } from "react-icons/bs";
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
+
+import HeaderSearch from './SearchForm';
 
 function HeaderNav() {
     const { pathname } = useLocation();
@@ -35,17 +36,7 @@ function HeaderNav() {
                     </Nav>
                     {
                         (pathname === "/" || pathname === "/search") ? null :
-                            <Form className="d-flex">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="جست و جو"
-                                    className="me-2 mx-1"
-                                    aria-label="Search"
-                                />
-                                <Button variant="outline-primary">
-                                    <BsSearch />
-                                </Button>
-                            </Form>
+                            <HeaderSearch />
                     }
                 </Navbar.Collapse>
             </Container>
