@@ -11,14 +11,15 @@ function RelatedGroups({ relatedGroups }) {
                 </Card.Header>
                 <Card.Body>
                     <ListGroup variant="flush">
-                        {relatedGroups.slice(0, 10).map((tag) => (
-                            <ListGroupItem key={tag.slug}>
+                        {relatedGroups.slice(0, 5).map((group) => (
+                            <ListGroupItem key={group.slug}>
                                 <Link
-                                    to={`/group/${tag.slug}`}
+                                    to={`/group/${group.slug}`}
                                     style={{ textDecoration: "none" }}
                                 >
-                                    {tag.name}
+                                    {group.name}
                                 </Link>
+                                <p>{group.description}</p>
                             </ListGroupItem>
                         ))}
                     </ListGroup>

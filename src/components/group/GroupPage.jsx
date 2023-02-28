@@ -32,11 +32,11 @@ function GroupPage() {
 
     return (
         <div className="row mt-4">
-            <section className="col-12 col-sm-9">
+            <section className="col-12 col-lg-9">
                 <GroupInfo group={group} />
                 <GroupMoreInfo group={group} />
             </section>
-            <section className="col-12 col-sm-3">
+            <section className="col-12 col-lg-3">
                 <RelatedGroups relatedGroups={relatedGroups} />
             </section>
         </div>
