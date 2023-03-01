@@ -20,10 +20,10 @@ function SearchForm() {
 
     return (
         <Paper
-            elevation={3}
+            elevation={2}
             component="form"
             onSubmit={handleSubmit}
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', mb: 3 }}
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
         >
             <InputBase
                 fullWidth
