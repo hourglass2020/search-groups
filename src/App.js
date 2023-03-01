@@ -45,6 +45,7 @@ function App() {
   const [groups, setGroups] = useState([]);
   const [filteredGroups, setFilteredGroups] = useImmer([]);
   const [tags, setTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,6 +82,8 @@ function App() {
           setGroups,
           tags,
           setTags,
+          selectedTags,
+          setSelectedTags,
           filteredGroups,
           setFilteredGroups,
           groupSearch,

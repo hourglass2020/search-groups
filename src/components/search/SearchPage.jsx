@@ -12,7 +12,7 @@ import SearchForm from "../navs/SearchForm";
 import { isEmpty } from "lodash";
 
 function SearchPage() {
-    const { filteredGroups, tags } = useContext(GroupContext);
+    const { filteredGroups, tags, selectedTags, setSelectedTags } = useContext(GroupContext);
     const [active, setActive] = useState(1);
 
     let items = [];

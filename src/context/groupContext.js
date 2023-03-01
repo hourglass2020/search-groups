@@ -5,6 +5,8 @@ export const GroupContext = createContext({
     setGroups: () => { },
     tags: [],
     setTags: () => { },
+    selectedTags: [],
+    setSelectedTags: () => { },
     filteredGroups: [],
     setFilteredGroups: () => { },
     groupSearch: () => { }
