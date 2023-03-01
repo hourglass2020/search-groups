@@ -1,15 +1,15 @@
 import React, { useState, useContext } from "react";
 import {
     ListGroup,
-    Pagination,
 } from "react-bootstrap";
+import { isEmpty } from "lodash";
 
 import MainListItem from "../landing/MainListItem";
 import CategoriesColumn from "./CategoriesColumn";
 
 import { GroupContext } from './../../context/groupContext';
 import SearchForm from "../navs/SearchForm";
-import { isEmpty } from "lodash";
+import { Divider, List, ListItem, Pagination } from "@mui/material";
 
 function SearchPage() {
     const { filteredGroups, tags, selectedTags, setSelectedTags } = useContext(GroupContext);
@@ -29,7 +29,7 @@ function SearchPage() {
     }
 
     return (
-        <div className="row">
+        <div className="row mb-5">
             <div className="col-12 col-md-3 mt-5">
                 <CategoriesColumn tags={tags} />
             </div>
@@ -42,24 +42,27 @@ function SearchPage() {
                         <SearchForm />
                     </div>
                 </div>
-                <div className="mt-1 w-100">
-                    <ListGroup variant="flush" className="main-list">
+                <div className="mt-4 w-100">
+                    <List
+                        className="main-list"
+                    >
                         {filteredGroups.map((group) => (
-                            <ListGroup.Item key={`group${group.slug}`}>
-                                <MainListItem
-                                    name={group.name}
-                                    description={group.description}
-                                    id={group.slug}
-                                    image={group.image}
-                                />
-                            </ListGroup.Item>
+                            <>
+                                <ListItem key={`group${group.slug}`} alignItems="flex-start">
+                                    <MainListItem
+                                        name={group.name}
+                                        description={group.description}
+                                        id={group.slug}
+                                        image={group.image}
+                                    />
+                                </ListItem>
+                                <Divider variant="middle" component={"li"} />
+                            </>
                         ))}
-                    </ListGroup>
+                    </List>
                 </div>
                 {isEmpty([filteredGroups]) ? null :
-                    <Pagination dir="ltr" className="mt-4">
-                        {items}
-                    </Pagination>
+                    <Pagination sx={{ mt: 4 }} count={4} color="primary" />
                 }
             </div>
         </div>

@@ -118,7 +118,6 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                                         <MenuItem
                                             key={tag.name}
                                             value={tag.name}
-                                        // style={getStyles(name, personName, theme)}
                                         >
                                             {tag.name}
                                         </MenuItem>

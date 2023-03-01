@@ -11,7 +11,6 @@ function LandingGroups() {
     return (
         <div className="mt-3 w-100" style={{ maxHeight: "100px" }}>
             <List
-                variant="flush"
                 style={{ maxHeight: "30vh" }}
                 className="w-100 overflow-auto main-list"
             >
