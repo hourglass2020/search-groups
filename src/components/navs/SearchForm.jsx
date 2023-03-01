@@ -1,7 +1,7 @@
+import { IconButton, InputBase, Paper } from "@mui/material";
 import React, { useContext } from "react";
-import { Button, Form } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
 
 import { GroupContext } from './../../context/groupContext';
 
@@ -11,28 +11,32 @@ function SearchForm() {
 
     const { groupSearch } = useContext(GroupContext);
 
-    const onSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        groupSearch(event.target.search.value)
+        const data = new FormData(event.currentTarget);
+        groupSearch(data.get("search"))
         navigate("/search");
     }
 
     return (
-        <>
-            <Form className="d-flex" onSubmit={onSubmit}>
-                <Form.Control
-                    type="search"
-                    name="search"
-                    placeholder="جست و جو"
-                    className="me-2 mx-1"
-                    aria-label="Search"
-                    onChange={event => groupSearch(event.target.value)}
-                />
-                <Button variant="outline-primary" type="submit">
-                    <BsSearch />
-                </Button>
-            </Form>
-        </>
+        <Paper
+            elevation={3}
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', mb: 3 }}
+        >
+            <InputBase
+                fullWidth
+                name="search"
+                sx={{ ml: 1 }}
+                placeholder="جست و جو"
+                onChange={event => groupSearch(event.target.value)}
+            />
+            <IconButton type="submit" sx={{ p: '10px' }} >
+                <SearchIcon />
+            </IconButton>
+        </Paper>
+
     );
 }
 
