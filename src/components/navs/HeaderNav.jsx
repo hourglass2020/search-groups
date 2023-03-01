@@ -9,6 +9,14 @@ function HeaderNav() {
     const { pathname } = useLocation();
     const [formShow, setFormShow] = useState(false)
 
+    const handleClickOpen = () => {
+        setFormShow(true);
+    };
+
+    const handleClose = () => {
+        setFormShow(false);
+    };
+
     return (
         <Navbar bg="white" expand="lg">
             <Container >
@@ -32,10 +40,11 @@ function HeaderNav() {
                         <NavLink className={"nav-item nav-link"} to="/search">
                             لیست گروه ها
                         </NavLink>
-                        <NavLink className={"nav-item nav-link"} onClick={() => setFormShow(true)}>
+                        <NavLink className={"nav-item nav-link"} onClick={handleClickOpen}>
                             افزودن گروه
                         </NavLink>
-                        <AddGroupForm show={formShow} onHide={() => setFormShow(false)} />
+                        <AddGroupForm handleClose={handleClose} open={formShow} setOpen={setFormShow} />
+
                     </Nav>
                     {
                         (pathname === "/" || pathname === "/search") ? null :
