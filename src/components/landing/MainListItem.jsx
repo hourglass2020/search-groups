@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsFillCaretLeftFill } from "react-icons/bs";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import { IconButton } from '@mui/material';
 
 function MainListItem({ id, name, image, description }) {
     return (
@@ -19,9 +20,9 @@ function MainListItem({ id, name, image, description }) {
                 </div>
             </div>
             <Link to={`/group/${id}`}>
-                <div className="main-list-item-more">
-                    <BsFillCaretLeftFill />
-                </div>
+                <IconButton>
+                    <ArrowLeftIcon fontSize="large" color="primary" />
+                </IconButton>
             </Link>
         </div>
     );

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 import AddGroupForm from './AddGroupForm';
 import SearchForm from './SearchForm';
@@ -18,7 +19,7 @@ function HeaderNav() {
     };
 
     return (
-        <Navbar bg="white" expand="lg">
+        <Navbar bg="primary" variant='dark' expand="lg">
             <Container >
                 <Navbar.Brand href="/">
                     <img

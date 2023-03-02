@@ -1,18 +1,26 @@
 import React, { useContext } from "react";
-import { Card, ListGroupItem, ListGroup, Form } from "react-bootstrap";
 import { GroupContext } from "./../../context/groupContext";
-import _ from "lodash";
+import { includes } from "lodash";
+import {
+    Box,
+    Checkbox,
+    Divider,
+    FormControlLabel,
+    List,
+    ListItem,
+    Paper,
+} from "@mui/material";
 
 function CategoriesColumn({ tags }) {
     const { selectedTags, setSelectedTags } = useContext(GroupContext);
 
     const handleSelect = (event, tag) => {
         if (event.target.checked === true) {
-            if (!_.includes(selectedTags, tag)) {
+            if (!includes(selectedTags, tag)) {
                 setSelectedTags([...selectedTags, tag]);
             }
         } else {
-            if (_.includes(selectedTags, tag)) {
+            if (includes(selectedTags, tag)) {
                 const filteredTags = selectedTags.filter((t) => t === tag.id);
                 setSelectedTags(filteredTags);
             }
@@ -24,21 +32,20 @@ function CategoriesColumn({ tags }) {
     return (
         <div>
             <h4>انتخاب گروه</h4>
-            <Card className="mb-4">
-                <Card.Body>
-                    <ListGroup variant="flush">
-                        {tags.slice(4, 15).map((tag) => (
-                            <ListGroupItem key={`tag${tag.id}`}>
-                                <Form.Check
-                                    type="checkbox"
-                                    label={tag.title}
-                                    onClick={(event) => handleSelect(event, tag)}
-                                />
-                            </ListGroupItem>
+            <Paper elevation={2}>
+                <Box>
+                    <List>
+                        {tags.slice(0, 10).map((tag) => (
+                            <div key={`tag${tag.slug}`}>
+                                <ListItem >
+                                    <FormControlLabel control={<Checkbox />} label={tag.name} />
+                                </ListItem>
+                                <Divider component={"li"} variant="middle" />
+                            </div>
                         ))}
-                    </ListGroup>
-                </Card.Body>
-            </Card>
+                    </List>
+                </Box>
+            </Paper>
         </div>
     );
 }

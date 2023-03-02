@@ -1,7 +1,4 @@
 import React, { useState, useContext } from "react";
-import {
-    ListGroup,
-} from "react-bootstrap";
 import { isEmpty } from "lodash";
 
 import MainListItem from "../landing/MainListItem";
@@ -13,20 +10,6 @@ import { Divider, List, ListItem, Pagination } from "@mui/material";
 
 function SearchPage() {
     const { filteredGroups, tags, selectedTags, setSelectedTags } = useContext(GroupContext);
-    const [active, setActive] = useState(1);
-
-    let items = [];
-    for (let number = 1; number <= 3; number++) {
-        items.push(
-            <Pagination.Item
-                key={number}
-                active={number === active}
-                onClick={() => setActive(number)}
-            >
-                {number}
-            </Pagination.Item>
-        );
-    }
 
     return (
         <div className="row mb-5">
@@ -47,8 +30,8 @@ function SearchPage() {
                         className="main-list"
                     >
                         {filteredGroups.map((group) => (
-                            <>
-                                <ListItem key={`group${group.slug}`} alignItems="flex-start">
+                            <div key={`group${group.slug}`}>
+                                <ListItem alignItems="flex-start">
                                     <MainListItem
                                         name={group.name}
                                         description={group.description}
@@ -57,7 +40,7 @@ function SearchPage() {
                                     />
                                 </ListItem>
                                 <Divider variant="middle" component={"li"} />
-                            </>
+                            </div>
                         ))}
                     </List>
                 </div>

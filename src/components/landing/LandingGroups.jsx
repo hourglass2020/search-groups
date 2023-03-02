@@ -15,8 +15,8 @@ function LandingGroups() {
             ) : (
                 <List sx={{ minHeight: 100 }} className="w-100 main-list">
                     {filteredGroups.slice(0, 3).map((group) => (
-                        <>
-                            <ListItem key={`group${group.slug}`} alignItems="flex-start">
+                        <div key={`group${group.slug}`}>
+                            <ListItem alignItems="flex-start">
                                 <MainListItem
                                     name={group.name}
                                     description={group.description}
@@ -25,7 +25,7 @@ function LandingGroups() {
                                 />
                             </ListItem>
                             <Divider variant="middle" component={"li"} />
-                        </>
+                        </div>
                     ))}
                 </List>
             )}

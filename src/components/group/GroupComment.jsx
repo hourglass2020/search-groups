@@ -1,27 +1,32 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
-import { formatDate } from '../../services/jalali'
+import { Paper } from "@mui/material";
+import React from "react";
+import { formatDate } from "../../services/jalali";
 
 function GroupComment({ comment }) {
     return (
-        <Card className='my-2 py-2 px-3'>
+        <Paper className="my-2 py-2 px-3">
             <div>
-                <section className='d-flex align-items-center'>
+                <section className="d-flex align-items-center">
                     <img src="/images/comment.svg" alt="comment" height={30} />
-                    <div className='d-flex align-items-baseline'>
-                        <h6 className='mt-2 mx-2'>{comment.name}</h6>
+                    <div className="d-flex align-items-baseline">
+                        <h6 className="mt-2 mx-2">{comment.name}</h6>
                         <span>|</span>
-                        <h6 className='mx-2 mt-2' style={{
-                            fontSize: 13
-                        }}>{formatDate(comment.created_at)}</h6>
+                        <h6
+                            className="mx-2 mt-2"
+                            style={{
+                                fontSize: 13,
+                            }}
+                        >
+                            {formatDate(comment.created_at)}
+                        </h6>
                     </div>
                 </section>
-                <section className='mt-2'>
+                <section className="mt-2">
                     <p>{comment.message}</p>
                 </section>
             </div>
-        </Card>
-    )
+        </Paper>
+    );
 }
 
-export default GroupComment
+export default GroupComment;

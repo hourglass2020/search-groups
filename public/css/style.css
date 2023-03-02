@@ -27,7 +27,7 @@
 .main-list-item-more {
   cursor: pointer;
   padding: 8px 10px;
-  border-radius: 50%;
+  border-radius: 50% 40%;
   transition: all 0.3s;
 }
 
