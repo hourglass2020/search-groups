@@ -1,10 +1,10 @@
-import { Paper } from "@mui/material";
 import React from "react";
 import { formatDate } from "../../services/jalali";
+import { Card } from 'react-bootstrap';
 
 function GroupComment({ comment }) {
     return (
-        <Paper className="my-2 py-2 px-3">
+        <Card key={`comment${comment.created_at}`} className="my-2 py-2 px-3">
             <div>
                 <section className="d-flex align-items-center">
                     <img src="/images/comment.svg" alt="comment" height={30} />
@@ -25,7 +25,7 @@ function GroupComment({ comment }) {
                     <p>{comment.message}</p>
                 </section>
             </div>
-        </Paper>
+        </Card>
     );
 }
 

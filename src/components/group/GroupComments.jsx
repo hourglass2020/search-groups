@@ -7,7 +7,7 @@ import { Divider } from "@mui/material";
 
 function GroupComments({ comments }) {
     return (
-        <>
+        <div>
             <section>
                 <Grid container spacing={2}>
                     <Grid xs={6}>
@@ -39,7 +39,7 @@ function GroupComments({ comments }) {
             ) : (
                 comments.map((comment) => <GroupComment comment={comment} />)
             )}
-        </>
+        </div>
     );
 }
 
