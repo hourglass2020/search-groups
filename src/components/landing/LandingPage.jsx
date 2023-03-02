@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import LandingHeader from "./LandingHeader";
 import LandingGroups from "./LandingGroups";
 import LandingSearch from "./LandingSearch";
 
 function LandingPage() {
-
     return (
         <div className="d-flex flex-column justify-content-center">
             <LandingHeader />
