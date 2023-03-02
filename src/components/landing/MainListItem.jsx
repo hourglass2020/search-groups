@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsFillCaretLeftFill } from "react-icons/bs";
+import { stripTags } from '../../services/helpers';
 
 function MainListItem({ id, name, image, description }) {
     return (
@@ -15,7 +16,7 @@ function MainListItem({ id, name, image, description }) {
                     <Link to={`/group/${id}`} style={{ textDecoration: "none" }}>
                         <h6>{name}</h6>
                     </Link>
-                    <p>{description}</p>
+                    <p>{stripTags(description)}</p>
                 </div>
             </div>
             <Link to={`/group/${id}`}>

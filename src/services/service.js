@@ -2,6 +2,8 @@ import axios from "axios";
 
 const SERVER_URL = "https://devgp.iranshomar.ir/api/v1";
 
+global.name = 'گروه یاب';
+
 // ? Groups
 
 // @desc Get All Groups
