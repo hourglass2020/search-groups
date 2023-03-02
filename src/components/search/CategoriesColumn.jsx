@@ -29,7 +29,7 @@ function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect })
                 </AccordionSummary>
                 <AccordionDetails>
                     <List>
-                        {tags.slice(0, 10).map((tag) => (
+                        {tags.slice(0, 15).map((tag) => (
                             <div key={`tag${tag.slug}`}>
                                 <ListItem>
                                     <FormControlLabel
