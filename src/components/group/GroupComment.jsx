@@ -1,5 +1,5 @@
 import React from "react";
-import { formatDate } from "../../services/jalali";
+import { formatDate } from "../../services/helpers";
 import { Card } from 'react-bootstrap';
 
 function GroupComment({ comment }) {
