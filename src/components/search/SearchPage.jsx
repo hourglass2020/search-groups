@@ -18,18 +18,8 @@ import SearchForm from "../navs/SearchForm";
 import { GroupContext } from "./../../context/groupContext";
 
 function SearchPage() {
-    const { filteredGroups, tags, selectedTags, setSelectedTags } =
+    const { filteredGroups, tags, selectedTags, setSelectedTags, handleSelect } =
         useContext(GroupContext);
-
-    const handleSelect = (checked, tag) => {
-        if (checked === true) {
-            setSelectedTags([...selectedTags, tag]);
-        } else {
-            const filteredTags = selectedTags.filter((t) => t.slug !== tag.slug);
-            setSelectedTags(filteredTags);
-        }
-    };
-
 
     return (
         <div className="row mb-5">
@@ -55,7 +45,7 @@ function SearchPage() {
                     sx={{ mt: 2, marginInlineStart: 3 }}
                 >
                     {selectedTags.map((tag) => (
-                        <Grid>
+                        <Grid key={`chip${tag.slug}`}>
                             <Chip
                                 label={tag.name}
                                 sx={{ bgcolor: tag.color, color: "white" }}

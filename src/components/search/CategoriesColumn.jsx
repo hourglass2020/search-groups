@@ -2,14 +2,11 @@ import {
     Accordion,
     AccordionDetails,
     AccordionSummary,
-    Box,
     Checkbox,
     Divider,
     FormControlLabel,
     List,
     ListItem,
-    Paper,
-    useMediaQuery,
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import { theme } from './../ui/theme';
@@ -31,7 +28,6 @@ function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect })
                     <h4>انتخاب گروه</h4>
                 </AccordionSummary>
                 <AccordionDetails>
-
                     <List>
                         {tags.slice(0, 10).map((tag) => (
                             <div key={`tag${tag.slug}`}>
@@ -48,7 +44,7 @@ function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect })
                                         label={tag.name}
                                     />
                                 </ListItem>
-                                <Divider component={"li"} variant="middle" />
+                                <Divider variant="middle" sx={{ backgroundColor: "grey" }} />
                             </div>
                         ))}
                     </List>

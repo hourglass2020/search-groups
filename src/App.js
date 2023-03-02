@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import _ from "lodash";
+import _, {
+  debounce,
+  difference,
+  includes,
+  intersectionBy,
+  isEmpty,
+} from "lodash";
 
 import { getAllGroups, getAllTags } from "./services/service";
 
@@ -45,7 +51,7 @@ function App() {
   const [groups, setGroups] = useState([]);
   const [filteredGroups, setFilteredGroups] = useImmer([]);
   const [tags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useImmer([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,14 +70,40 @@ function App() {
     fetchData();
   }, []);
 
-  const groupSearch = _.debounce((query) => {
-    if (!query)
-      return setFilteredGroups([...groups]);
+  const groupSearch = debounce((query) => {
+    if (!query) return setFilteredGroups([...groups]);
 
-    setFilteredGroups(draft => draft.filter((group) => {
-      return group.name.toLowerCase().includes(query.toLowerCase());
-    }));
+    setFilteredGroups((draft) =>
+      draft.filter((group) => {
+        return group.name.toLowerCase().includes(query.toLowerCase());
+      })
+    );
   }, 1000);
+
+  const handleSelect = (checked, tag) => {
+    if (checked === true) {
+      setSelectedTags([...selectedTags, tag]);
+    } else {
+      setSelectedTags((draft) =>
+        draft.filter((t) => {
+          return t.slug !== tag.slug;
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (!isEmpty(selectedTags)) {
+      setFilteredGroups(
+        groups.filter((group) => {
+          console.log(intersectionBy(group.tags, selectedTags, "name"));
+          return intersectionBy(group.tags, selectedTags, "name").length !== 0;
+        })
+      );
+    } else {
+      setFilteredGroups(groups);
+    }
+  }, [selectedTags]);
 
   return (
     <div dir="rtl">
@@ -87,6 +119,7 @@ function App() {
           filteredGroups,
           setFilteredGroups,
           groupSearch,
+          handleSelect,
         }}
       >
         <RouterProvider router={router} />

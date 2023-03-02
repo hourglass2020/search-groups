@@ -9,5 +9,6 @@ export const GroupContext = createContext({
     setSelectedTags: () => { },
     filteredGroups: [],
     setFilteredGroups: () => { },
-    groupSearch: () => { }
+    groupSearch: () => { },
+    handleSelect: () => { }
 });
