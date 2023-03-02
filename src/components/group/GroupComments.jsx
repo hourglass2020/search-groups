@@ -1,9 +1,8 @@
-import React from "react";
-import GroupComment from "./GroupComment";
 import { isEmpty } from "lodash";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Button, TextField } from "@mui/material";
-import { Divider } from "@mui/material";
+import { Divider, Button, TextField } from "@mui/material";
+
+import GroupComment from "./GroupComment";
 
 function GroupComments({ comments }) {
     return (
