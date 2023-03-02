@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { GroupContext } from "./../../context/groupContext";
-import { includes } from "lodash";
 import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
     Box,
     Checkbox,
     Divider,
@@ -9,43 +9,51 @@ import {
     List,
     ListItem,
     Paper,
+    useMediaQuery,
 } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import { theme } from './../ui/theme';
+// import { useState } from "react";
 
-function CategoriesColumn({ tags }) {
-    const { selectedTags, setSelectedTags } = useContext(GroupContext);
+function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect }) {
 
-    const handleSelect = (event, tag) => {
-        if (event.target.checked === true) {
-            if (!includes(selectedTags, tag)) {
-                setSelectedTags([...selectedTags, tag]);
-            }
-        } else {
-            if (includes(selectedTags, tag)) {
-                const filteredTags = selectedTags.filter((t) => t === tag.id);
-                setSelectedTags(filteredTags);
-            }
-        }
-
-        console.log(selectedTags);
-    };
+    /*     const Desktop = useMediaQuery('(min-width:1200px)');
+        const Ipad = useMediaQuery('(min-width:1000px)');
+        const Mobile = useMediaQuery('(min-width:800px)');
+     */
 
     return (
         <div>
-            <h4>انتخاب گروه</h4>
-            <Paper elevation={2}>
-                <Box>
+            <Accordion>
+                <AccordionSummary
+                    open
+                    expandIcon={<ExpandMoreIcon />}>
+                    <h4>انتخاب گروه</h4>
+                </AccordionSummary>
+                <AccordionDetails>
+
                     <List>
                         {tags.slice(0, 10).map((tag) => (
                             <div key={`tag${tag.slug}`}>
-                                <ListItem >
-                                    <FormControlLabel control={<Checkbox />} label={tag.name} />
+                                <ListItem>
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox
+                                                checked={selectedTags.includes(tag)}
+                                                onChange={(event) =>
+                                                    handleSelect(event.target.checked, tag)
+                                                }
+                                            />
+                                        }
+                                        label={tag.name}
+                                    />
                                 </ListItem>
                                 <Divider component={"li"} variant="middle" />
                             </div>
                         ))}
                     </List>
-                </Box>
-            </Paper>
+                </AccordionDetails>
+            </Accordion>
         </div>
     );
 }

@@ -37,7 +37,7 @@ const MenuProps = {
 function AddGroupForm({ handleClose, setOpen, open }) {
     const { tags } = useContext(GroupContext);
     const processedTags = tags.map((tag) => {
-        return { name: tag.name, slug: tag.slug };
+        return { name: tag.name, slug: tag.slug, color: tag.color };
     });
 
     const [selectedTags, setSelectedTags] = useState([]);
@@ -94,7 +94,7 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                             {" "}
                             <FormControl className="w-100">
                                 <InputLabel id="demo-multiple-chip-label">
-                                    تگ های مربوط
+                                    تگ ها
                                 </InputLabel>
                                 <Select
                                     labelId="demo-multiple-chip-label"
@@ -107,9 +107,9 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                                     }
                                     renderValue={(selected) => (
                                         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                                            {selected.map((value) => (
+                                            {selected.map((value) =>
                                                 <Chip key={value} label={value} />
-                                            ))}
+                                            )}
                                         </Box>
                                     )}
                                     MenuProps={MenuProps}
@@ -168,36 +168,6 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                     </Button>
                 </DialogActions>
             </Dialog>
-
-            {/*  <Modal
-                        {...props}
-                        size='lg'
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered
-                        style={{ direction: 'rtl' }}
-                    >
-                        <Modal.Header>
-                            <Modal.Title id='contained-modal-title-vcenter'>
-                                افزودن گروه جدید
-                            </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-        
-                            <Form>
-                                <Form.Control type='text' placeholder='نام گروه' className='mt-2' />
-                                <Form.Control type='url' placeholder='آدرس گروه' className='mt-2' />
-                                <Form.Control type='url' placeholder='آدرس عکس گروه' className='mt-2' />
-                                <Form.Control type='text' as={"textarea"} placeholder='توضیحات بیشتر' className='mt-2' />
-                            </Form>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant='secondary' onClick={props.onHide}>انصراف</Button>
-                            <Button onClick={() => {
-                                toast("درحال تکمیل سایت هستیم...", { icon: "🚀" });
-                                props.onHide()
-                            }}>افزودن</Button>
-                        </Modal.Footer>
-                    </Modal> */}
         </div>
     );
 }
