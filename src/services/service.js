@@ -61,6 +61,6 @@ export const getGroupCommnets = (groupSlug) => {
 // @route POST %SERVER_URL/comments?group={groupSlug}
 export const addNewComment = (commentData) => {
     const url = `${SERVER_URL}/comments`;
-    return axios.post(url);
+    return axios.post(url, commentData);
 }
 

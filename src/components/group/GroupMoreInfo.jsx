@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 import GroupComments from './GroupComments';
 
-function GroupMoreInfo({ group, comments }) {
+function GroupMoreInfo({ group, comments, handleSubmitCommentForm }) {
     return (
         <div className="mt-5">
             <Helmet>
@@ -19,7 +19,7 @@ function GroupMoreInfo({ group, comments }) {
                     <p dangerouslySetInnerHTML={{ __html: group.description }}></p>
                 </Tab>
                 <Tab eventKey="profile" title="نظرات">
-                    <GroupComments comments={comments} />
+                    <GroupComments comments={comments} handleSubmitCommentForm={handleSubmitCommentForm} />
                 </Tab>
             </Tabs>
         </div>

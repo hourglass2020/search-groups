@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 
 function GroupComment({ comment }) {
     return (
-        <Card key={`comment${comment.created_at}`} className="my-2 py-2 px-3">
+        <Card className="my-2 py-2 px-3">
             <div>
                 <section className="d-flex align-items-center">
                     <img src="/images/comment.svg" alt="comment" height={30} />
