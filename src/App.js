@@ -96,7 +96,7 @@ function App() {
     if (!isEmpty(selectedTags)) {
       setFilteredGroups(
         groups.filter((group) => {
-          console.log(intersectionBy(group.tags, selectedTags, "name"));
+          // console.log(intersectionBy(group.tags, selectedTags, "name"));
           return intersectionBy(group.tags, selectedTags, "name").length !== 0;
         })
       );

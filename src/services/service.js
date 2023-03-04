@@ -8,8 +8,8 @@ global.name = "گروه یاب";
 
 // @desc Get All Groups
 // @route GET %SERVER_URL%/groups
-export const getAllGroups = () => {
-    const url = `${SERVER_URL}/groups`;
+export const getAllGroups = (page) => {
+    const url = `${SERVER_URL}/groups/`;
     return axios.get(url);
 }
 

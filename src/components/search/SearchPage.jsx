@@ -21,6 +21,8 @@ function SearchPage() {
     const { filteredGroups, tags, selectedTags, setSelectedTags, handleSelect } =
         useContext(GroupContext);
 
+    const [pageCount, setPageCount] = useState(1);
+
     return (
         <div className="row mb-5">
             <div className="col-12 col-md-3 mt-5">
@@ -72,7 +74,14 @@ function SearchPage() {
                     </List>
                 </div>
                 {isEmpty(filteredGroups) ? null : (
-                    <Pagination sx={{ mt: 4 }} count={4} color="primary" />
+                    <Pagination
+                        sib
+                        sx={{ mt: 4 }}
+                        count={4}
+                        showFirstButton
+                        showLastButton
+                        color="primary"
+                    />
                 )}
             </div>
         </div>
