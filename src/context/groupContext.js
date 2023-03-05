@@ -10,5 +10,11 @@ export const GroupContext = createContext({
     filteredGroups: [],
     setFilteredGroups: () => { },
     groupSearch: () => { },
-    handleSelect: () => { }
+    handleSelect: () => { },
+    setDrawerOpen: () => { },
+    drawerOpen: {},
+    handleCloseForm: () => { },
+    handleClickOpenForm: () => { },
+    formShow: {},
+    setFormShow: () => { }
 });

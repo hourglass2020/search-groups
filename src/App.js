@@ -3,8 +3,6 @@ import { useImmer } from "use-immer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import _, {
   debounce,
-  difference,
-  includes,
   intersectionBy,
   isEmpty,
 } from "lodash";
@@ -52,6 +50,9 @@ function App() {
   const [filteredGroups, setFilteredGroups] = useImmer([]);
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useImmer([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [formShow, setFormShow] = useState(false)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,6 +106,16 @@ function App() {
     }
   }, [selectedTags]);
 
+
+
+  const handleClickOpenForm = () => {
+    setFormShow(true);
+  };
+
+  const handleCloseForm = () => {
+    setFormShow(false);
+  };
+
   return (
     <div dir="rtl">
       <Toaster position="bottom-left" />
@@ -120,6 +131,12 @@ function App() {
           setFilteredGroups,
           groupSearch,
           handleSelect,
+          setDrawerOpen,
+          drawerOpen,
+          formShow,
+          setFormShow,
+          handleClickOpenForm,
+          handleCloseForm
         }}
       >
         <RouterProvider router={router} />

@@ -1,60 +1,103 @@
-import { useState } from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { useContext, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
-import AddGroupForm from './AddGroupForm';
-import SearchForm from './SearchForm';
+import AddGroupForm from "./AddGroupForm";
+import SearchForm from "./SearchForm";
+import { GroupContext } from "./../../context/groupContext";
 
 function HeaderNav() {
+    const {
+        setDrawerOpen,
+        handleClickOpenForm,
+        handleCloseForm,
+        formShow,
+        setFormShow,
+    } = useContext(GroupContext);
     const { pathname } = useLocation();
-    const [formShow, setFormShow] = useState(false)
-
-    const handleClickOpen = () => {
-        setFormShow(true);
-    };
-
-    const handleClose = () => {
-        setFormShow(false);
-    };
 
     return (
-        <Navbar bg="primary" variant='dark' expand="lg">
-            <Container >
-                <Navbar.Brand href="/">
-                    <img
-                        alt=""
-                        src="/images/logo.png"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    />{' '}
-                    گروه یاب
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
+        <header>
+            <AppBar
+                position="sticky"
+                color="transparent"
+                sx={{ backdropFilter: "blur(10)" }}
+            >
+                <Toolbar>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        disableRipple
+                        sx={{
+                            mr: 1,
+                            display: {
+                                xs: "block",
+                                md: "none",
+                            },
+                        }}
+                        onClick={() => setDrawerOpen(true)}
                     >
-                        <NavLink className={"nav-item nav-link"} to="/search">
-                            لیست گروه ها
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <img
+                            alt=""
+                            src="/images/logo.png"
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
+                        />{" "}
+                        <NavLink
+                            to="/"
+                            style={{ textDecoration: "none", color: "#ffffff" }}
+                        >
+                            گروه یاب
                         </NavLink>
-                        <NavLink className={"nav-item nav-link"} onClick={handleClickOpen}>
-                            افزودن گروه
-                        </NavLink>
-                        <AddGroupForm handleClose={handleClose} open={formShow} setOpen={setFormShow} />
+                    </Typography>
 
-                    </Nav>
-                    {
-                        (pathname === "/" || pathname === "/search") ? null :
-                            <SearchForm />
-                    }
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-    )
+                    <NavLink to="/search" style={{ textDecoration: "none" }}>
+                        <Button
+                            variant={"text"}
+                            sx={{
+                                color: "white",
+                                mx: 1,
+                                display: {
+                                    xs: "none",
+                                    md: "block",
+                                },
+                            }}
+                        >
+                            لیست گروه ها
+                        </Button>
+                    </NavLink>
+                    <Button
+                        variant={"outlined"}
+                        sx={{
+                            color: "white",
+                            borderColor: "white",
+                            mx: 1,
+                            display: {
+                                xs: "none",
+                                md: "block",
+                            },
+                        }}
+                        onClick={handleClickOpenForm}
+                    >
+                        افزودن گروه
+                    </Button>
+                    <AddGroupForm
+                        handleClose={handleCloseForm}
+                        open={formShow}
+                        setOpen={setFormShow}
+                    />
+                    {pathname === "/" || pathname === "/search" ? null : <SearchForm />}
+                </Toolbar>
+            </AppBar>
+        </header>
+    );
 }
 
-export default HeaderNav
+export default HeaderNav;

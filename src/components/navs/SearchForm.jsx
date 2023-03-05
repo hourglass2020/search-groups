@@ -23,7 +23,7 @@ function SearchForm() {
             elevation={2}
             component="form"
             onSubmit={handleSubmit}
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', mx: 1 }}
         >
             <InputBase
                 fullWidth
