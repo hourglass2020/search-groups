@@ -9,7 +9,8 @@ global.name = "گروه یاب";
 // @desc Get All Groups
 // @route GET %SERVER_URL%/groups
 export const getAllGroups = (page) => {
-    const url = `${SERVER_URL}/groups/`;
+    const currentPage = page ? page : 1;
+    const url = `${SERVER_URL}/groups?page=${currentPage}`;
     return axios.get(url);
 }
 

@@ -1,14 +1,15 @@
 import React from "react";
 
+import Grid from '@mui/material/Unstable_Grid2';
+
 import LandingHeader from "./LandingHeader";
 import LandingGroups from "./LandingGroups";
 import LandingSearch from "./LandingSearch";
-import Grid from '@mui/material/Unstable_Grid2';
 
 function LandingPage() {
     return (
         <div className="d-flex flex-column justify-content-center">
-            <Grid container sx={{
+            <Grid container spacing={3} sx={{
                 height: {
                     md: "80vh"
                 }

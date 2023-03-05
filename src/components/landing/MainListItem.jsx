@@ -15,7 +15,7 @@ function MainListItem({ id, name, image, description }) {
                     height={50}
                 />
                 <div>
-                    <Link to={`/group/${id}`} style={{ textDecoration: "none" }}>
+                    <Link to={`/group/${id}`} style={{ textDecoration: "none", color: 'white' }}>
                         <h6>{name}</h6>
                     </Link>
                     <p>{stripTags(description)}</p>
@@ -23,7 +23,7 @@ function MainListItem({ id, name, image, description }) {
             </div>
             <Link to={`/group/${id}`}>
                 <IconButton>
-                    <ArrowLeftIcon fontSize="large" color="primary" />
+                    <ArrowLeftIcon fontSize="large" color="inherit" />
                 </IconButton>
             </Link>
         </div>
