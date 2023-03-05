@@ -1,6 +1,7 @@
 import React from "react";
 
 import Grid from '@mui/material/Unstable_Grid2';
+import { Box } from "@mui/material";
 
 import LandingHeader from "./LandingHeader";
 import LandingGroups from "./LandingGroups";
@@ -8,21 +9,21 @@ import LandingSearch from "./LandingSearch";
 
 function LandingPage() {
     return (
-        <div className="d-flex flex-column justify-content-center">
-            <Grid container spacing={3} sx={{
-                height: {
-                    md: "80vh"
-                }
-            }} justifyContent="center" alignItems={'center'}>
-                <Grid xs={12} md={6}>
-                    <LandingHeader />
-                </Grid>
-                <Grid xs={12} md={6}>
+        <Grid container spacing={3} sx={{
+            height: {
+                md: "80vh"
+            }
+        }} justifyContent="center" alignItems={'center'}>
+            <Grid xs={12} md={6}>
+                <LandingHeader />
+            </Grid>
+            <Grid xs={12} md={6}>
+                <Box sx={{ mt: 6 }}>
                     <LandingSearch />
                     <LandingGroups />
-                </Grid>
+                </Box>
             </Grid>
-        </div>
+        </Grid>
     );
 }
 

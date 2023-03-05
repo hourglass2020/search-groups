@@ -1,6 +1,6 @@
-import React from "react";
+import { Card } from "@mui/material";
+
 import { formatDate } from "../../services/helpers";
-import { Card } from 'react-bootstrap';
 
 function GroupComment({ comment }) {
     return (

@@ -5,7 +5,7 @@ import { Box, Drawer } from '@mui/material';
 import SearchForm from './SearchForm';
 
 import { GroupContext } from '../../context/groupContext';
-import { blueGrey } from '@mui/material/colors';
+import { lightBlue } from '@mui/material/colors';
 
 function NavDrawer() {
     const { setDrawerOpen, drawerOpen, handleClickOpenForm } =
@@ -17,7 +17,7 @@ function NavDrawer() {
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
         >
-            <Box sx={{ direction: "ltr", p: 2, bgcolor: blueGrey[700] }}>
+            <Box sx={{ direction: "ltr", p: 2, bgcolor: lightBlue[800] }}>
                 <SearchForm />
 
                 <NavLink

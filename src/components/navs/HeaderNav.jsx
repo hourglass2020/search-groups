@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import AddGroupForm from "./AddGroupForm";
@@ -93,7 +93,9 @@ function HeaderNav() {
                         open={formShow}
                         setOpen={setFormShow}
                     />
-                    {pathname === "/" || pathname === "/search" ? null : <SearchForm />}
+                    <Box display={{ xs: "none", md: 'block' }}>
+                        {pathname === "/" || pathname === "/search" ? null : <SearchForm />}
+                    </Box>
                 </Toolbar>
             </AppBar>
         </header>

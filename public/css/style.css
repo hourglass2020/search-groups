@@ -10,6 +10,10 @@
   font-display: swap;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   height: 100vh;
   font-family: "Shabnam";

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from 'react-hot-toast';
+import Grid from '@mui/material/Unstable_Grid2';
 
 import {
     getRelatedGroups,
@@ -11,7 +13,6 @@ import {
 import RelatedGroups from "./RelatedGroups";
 import GroupInfo from "./GroupInfo";
 import GroupMoreInfo from "./GroupMoreInfo";
-import { toast } from 'react-hot-toast';
 
 function GroupPage() {
     const { groupSlug } = useParams();
@@ -32,6 +33,7 @@ function GroupPage() {
                 setRelatedGroups(relatedGroupsData);
             } catch (error) {
                 console.log(error.message);
+                toast.error("دریافت اطلاعات با خطا مواجه شد، مجدد تلاش کنید.")
             }
         };
 
@@ -49,7 +51,7 @@ function GroupPage() {
         };
 
         try {
-            const { data, status } = await addNewComment(commentData);
+            const { status } = await addNewComment(commentData);
 
             if (status === 201) {
                 toast.success("نظر شما با موفقیت ثبت شد.")
@@ -69,19 +71,19 @@ function GroupPage() {
     }
 
     return (
-        <div className="row mt-4">
-            <section className="col-12 col-lg-9">
+        <Grid container spacing={3} direction={"row"} sx={{ mt: 4 }}>
+            <Grid xs={12} lg={9}>
                 <GroupInfo group={group} />
                 <GroupMoreInfo
                     group={group}
                     comments={comments}
                     handleSubmitCommentForm={handleSubmitCommentForm}
                 />
-            </section>
-            <section className="col-12 col-lg-3">
+            </Grid>
+            <Grid xs={12} lg={3}>
                 <RelatedGroups relatedGroups={relatedGroups} />
-            </section>
-        </div>
+            </Grid>
+        </Grid>
     );
 }
 
