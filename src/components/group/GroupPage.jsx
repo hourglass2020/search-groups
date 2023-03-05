@@ -72,7 +72,7 @@ function GroupPage() {
 
     return (
         <Grid container spacing={3} direction={"row"} sx={{ mt: 4 }}>
-            <Grid xs={12} lg={9}>
+            <Grid xs={12} lg={9} >
                 <GroupInfo group={group} />
                 <GroupMoreInfo
                     group={group}

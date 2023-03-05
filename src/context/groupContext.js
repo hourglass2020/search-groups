@@ -16,5 +16,7 @@ export const GroupContext = createContext({
     handleCloseForm: () => { },
     handleClickOpenForm: () => { },
     formShow: {},
-    setFormShow: () => { }
+    setFormShow: () => { },
+    pageCount: {},
+    setPageCount: () => { }
 });

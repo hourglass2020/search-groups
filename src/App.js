@@ -52,12 +52,13 @@ function App() {
   const [selectedTags, setSelectedTags] = useImmer([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [formShow, setFormShow] = useState(false)
+  const [pageCount, setPageCount] = useState(1);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: groupData } = await getAllGroups();
+        const { data: groupData } = await getAllGroups(pageCount);
         const { data: tagsData } = await getAllTags();
 
         setGroups(groupData.data);
@@ -69,7 +70,7 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [pageCount]);
 
   const groupSearch = debounce((query) => {
     if (!query) return setFilteredGroups([...groups]);
@@ -136,7 +137,9 @@ function App() {
           formShow,
           setFormShow,
           handleClickOpenForm,
-          handleCloseForm
+          handleCloseForm,
+          pageCount,
+          setPageCount
         }}
       >
         <RouterProvider router={router} />
