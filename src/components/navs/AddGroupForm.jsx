@@ -170,6 +170,7 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                                     name="link"
                                     label="لینک گروه"
                                     type="url"
+                                    helperText="لینک باید شامل https باشد."
                                     fullWidth
                                     required
                                     variant="outlined"
