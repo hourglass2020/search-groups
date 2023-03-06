@@ -6,17 +6,22 @@ import { isEmpty } from "lodash";
 function GroupInfo({ group }) {
     return (
         <div>
-            <Grid container justifyContent={"start"} alignItems={'center'} >
+            <Grid
+                container
+                justifyContent={"start"}
+                alignItems={"center"}
+                sx={{ mt: 2 }}
+            >
                 <Grid xs={3} container justifyContent={"center"}>
-                    <img src="/images/telegram.png" alt="telegram" style={{ width: "100%", minWidth: 100 }} />
+                    <img
+                        src={group.image ? group.image : "/images/telegram.png"}
+                        alt="telegram"
+                        style={{ width: "100%", borderRadius: "50%", minWidth: 100 }}
+                    />
                 </Grid>
                 <Grid xs={9}>
                     <h3>{group.name}</h3>
-                    <Grid
-                        container
-                        className="w-100"
-                        spacing={1}
-                    >
+                    <Grid container sx={{ width: 1 }} spacing={1}>
                         {!isEmpty(group) &&
                             group.tags.map((tag) => (
                                 <Grid key={`chip${tag.slug}`}>

@@ -4,7 +4,7 @@ import { formatDate } from "../../services/helpers";
 
 function GroupComment({ comment }) {
     return (
-        <Card className="my-2 py-2 px-3">
+        <Card sx={{ my: 2, py: 2, px: 3 }}>
             <div>
                 <section className="d-flex align-items-center">
                     <img src="/images/comment.svg" alt="comment" height={30} />
