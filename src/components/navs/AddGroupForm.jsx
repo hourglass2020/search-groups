@@ -66,10 +66,10 @@ function AddGroupForm({ handleClose, setOpen, open }) {
         })
 
         const data = new FormData();
-        data.append("name", event.target.name);
-        data.append("description", event.target.description);
-        data.append("tags", tagsData.map(t => t.slug));
-        data.append("link", event.target.link);
+        data.append("name", event.target.name.value);
+        data.append("description", event.target.description.value);
+        tagsData.forEach(t => data.append('tags[]', t.slug));
+        data.append("link", event.target.link.value);
         data.append("image", event.target["image-file"].files[0]);
 
 

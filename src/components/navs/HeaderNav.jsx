@@ -20,9 +20,9 @@ function HeaderNav() {
     return (
         <header>
             <AppBar
-                position="sticky"
+                position="fixed"
                 color="transparent"
-                sx={{ backdropFilter: "blur(10)" }}
+                sx={{ backdropFilter: "blur(40px)" }}
             >
                 <Toolbar>
                     <IconButton

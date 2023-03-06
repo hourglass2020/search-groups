@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 
+import { Container } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
@@ -8,9 +9,9 @@ import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
 
 import HeaderNav from "../components/navs/HeaderNav";
+import NavDrawer from './../components/navs/NavDrawer';
 
 import { theme } from "../components/ui/theme";
-import NavDrawer from './../components/navs/NavDrawer';
 
 const cacheRTL = createCache({
     key: "muirtl",
@@ -26,9 +27,9 @@ function MainLayout() {
                         <title>گروه یاب</title>
                     </Helmet>
                     <HeaderNav />
-                    <main className="container">
+                    <Container sx={{ mt: 7 }}>
                         <Outlet />
-                    </main>
+                    </Container>
                     <NavDrawer />
                 </HelmetProvider>
             </ThemeProvider>
