@@ -49,22 +49,24 @@ function SearchPage() {
                         <SearchForm />
                     </Grid>
                 </Grid>
-                <Grid
-                    container
-                    spacing={1}
-                    sx={{ mt: 2, marginInlineStart: 3, width: "100%" }}
-                >
-                    {selectedTags.map((tag) => (
-                        <Grid key={`chip${tag.slug}`}>
-                            <Chip
-                                label={tag.name}
-                                sx={{ bgcolor: tag.color, color: "white" }}
-                                onDelete={() => handleSelect(false, tag)}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-                <List className="main-list" sx={{ width: "100%" }}>
+                {!isEmpty(selectedTags) ? (
+                    <Grid
+                        container
+                        spacing={1}
+                        sx={{ mt: 2, marginInlineStart: 3, width: "100%" }}
+                    >
+                        {selectedTags.map((tag) => (
+                            <Grid key={`chip${tag.slug}`}>
+                                <Chip
+                                    label={tag.name}
+                                    sx={{ bgcolor: tag.color, color: "white" }}
+                                    onDelete={() => handleSelect(false, tag)}
+                                />
+                            </Grid>
+                        ))}
+                    </Grid>
+                ) : null}
+                <List sx={{ width: "100%" }}>
                     {filteredGroups.map((group) => (
                         <div key={`group${group.slug}`}>
                             <ListItem alignItems="flex-start">

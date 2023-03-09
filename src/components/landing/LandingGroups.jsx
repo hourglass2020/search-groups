@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { List, ListItem, Button, Divider } from "@mui/material";
+import { List, ListItem, Button, Divider, Typography, Box } from "@mui/material";
 
 import MainListItem from "./MainListItem";
 import { GroupContext } from "./../../context/groupContext";
@@ -9,9 +9,9 @@ function LandingGroups() {
     const { filteredGroups } = useContext(GroupContext);
 
     return (
-        <div className="mt-3 w-100">
+        <Box className=" w-100">
             {filteredGroups.length === 0 ? (
-                <h6>برای جست و جوی شما نتایجی وجود ندارد.</h6>
+                <Typography component={"h6"} sx={{ mt: 2 }}>برای جست و جوی شما نتایجی وجود ندارد.</Typography>
             ) : (
                 <List sx={{ minHeight: 100 }} className="w-100 main-list">
                     {filteredGroups.slice(0, 3).map((group) => (
@@ -36,7 +36,7 @@ function LandingGroups() {
                     </Button>
                 </Link>
             ) : null}
-        </div>
+        </Box>
     );
 }
 

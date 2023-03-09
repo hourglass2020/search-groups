@@ -1,36 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { IconButton } from "@mui/material";
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import { Box, Typography } from "@mui/material";
 
 import { stripTags } from "../../services/helpers";
 
 function MainListItem({ id, name, image, description }) {
     return (
-        <div className="d-flex justify-content-between align-items-center main-list-item w-100">
-            <div className="d-flex align-items-center">
+        <Box sx={{ display: "flex", flexDirection: "row", my: 1 }}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
                 <img
                     src={image ? image : "/images/telegram.png"}
                     alt={"logo"}
                     height={50}
-                    style={{ marginLeft: 10, borderRadius: '50%' }}
+                    style={{ marginLeft: 10, borderRadius: "50%" }}
                 />
                 <div>
                     <Link
                         to={`/group/${id}`}
                         style={{ textDecoration: "none", color: "white" }}
                     >
-                        <h6>{name}</h6>
+                        <Typography component={"h6"} variant={"h6"} fontWeight="bold">
+                            {name}
+                        </Typography>
                     </Link>
-                    <p>{stripTags(description)}</p>
+                    <Typography component={"p"} variant="body2">
+                        {stripTags(description)}
+                    </Typography>
                 </div>
-            </div>
-            <Link to={`/group/${id}`}>
-                <IconButton>
-                    <ArrowLeftIcon fontSize="large" color="inherit" />
-                </IconButton>
-            </Link>
-        </div>
+            </Box>
+        </Box>
     );
 }
 

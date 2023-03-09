@@ -1,30 +1,27 @@
-import { Card } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 
 import { formatDate } from "../../services/helpers";
+import commentIcon from "../../assets/images/comment.svg";
 
 function GroupComment({ comment }) {
     return (
         <Card sx={{ my: 2, py: 2, px: 3 }}>
-            <div>
-                <section className="d-flex align-items-center">
-                    <img src="/images/comment.svg" alt="comment" height={30} />
-                    <div className="d-flex align-items-baseline">
-                        <h6 className="mt-2 mx-2">{comment.name}</h6>
-                        <span>|</span>
-                        <h6
-                            className="mx-2 mt-2"
-                            style={{
-                                fontSize: 13,
-                            }}
-                        >
-                            {formatDate(comment.created_at)}
-                        </h6>
-                    </div>
-                </section>
-                <section className="mt-2">
-                    <p>{comment.message}</p>
-                </section>
-            </div>
+            <Grid alignItems={"center"} sx={{ p: 0 }} container>
+                <img src={commentIcon} alt="comment" height={30} />
+                <Grid alignItems={"baseline"} container>
+                    <Typography component={"h6"} sx={{ mt: 1, mx: 1 }}>
+                        {comment.name}
+                    </Typography>
+                    <span>|</span>
+                    <Typography component={"h6"} sx={{ mt: 1, mx: 1, fontSize: 13 }}>
+                        {formatDate(comment.created_at)}
+                    </Typography>
+                </Grid>
+            </Grid>
+            <Box sx={{ mt: 3 }}>
+                <Typography component={"p"}>{comment.message}</Typography>
+            </Box>
         </Card>
     );
 }

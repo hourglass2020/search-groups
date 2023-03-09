@@ -11,6 +11,7 @@ function LandingPage() {
     return (
         <Grid container spacing={3} sx={{
             height: {
+                xs: '60vh',
                 md: "80vh"
             }
         }} justifyContent="center" alignItems={'center'}>
@@ -18,7 +19,7 @@ function LandingPage() {
                 <LandingHeader />
             </Grid>
             <Grid xs={12} md={6}>
-                <Box sx={{ mt: 6 }}>
+                <Box sx={{ mt: 6, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <LandingSearch />
                     <LandingGroups />
                 </Box>

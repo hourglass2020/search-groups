@@ -7,17 +7,11 @@ import {
     FormControlLabel,
     List,
     ListItem,
+    Typography
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import { theme } from './../ui/theme';
-// import { useState } from "react";
 
 function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect }) {
-
-    /*     const Desktop = useMediaQuery('(min-width:1200px)');
-        const Ipad = useMediaQuery('(min-width:1000px)');
-        const Mobile = useMediaQuery('(min-width:800px)');
-     */
 
     return (
         <div>
@@ -25,7 +19,7 @@ function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect })
                 <AccordionSummary
                     open
                     expandIcon={<ExpandMoreIcon />}>
-                    <h4>انتخاب گروه</h4>
+                    <Typography component={"h6"} variant="h6">انتخاب گروه</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <List>
@@ -44,7 +38,7 @@ function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect })
                                         label={tag.name}
                                     />
                                 </ListItem>
-                                <Divider variant="middle" sx={{ backgroundColor: "grey" }} />
+                                <Divider variant="middle" sx={{ bgcolor: "gray" }} />
                             </div>
                         ))}
                     </List>

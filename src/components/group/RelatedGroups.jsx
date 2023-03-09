@@ -10,31 +10,33 @@ import {
 
 function RelatedGroups({ relatedGroups }) {
     return (
-        <Card className="mb-4 mt-4" sx={{ color: "black" }}>
+        <Card sx={{ color: "black", mt: 4, mb: 4 }}>
             <CardHeader
                 title={
-                    <Typography variant="h6">
+                    <Typography component="h4" variant="h6">
                         گروه های مرتبط
                     </Typography>
                 }
             />
             <>
-                {relatedGroups.slice(0, 5).map((group) => (
-                    <div key={group.slug}>
-                        <Grid direction={"column"}>
-                            <Link
-                                to={`/group/${group.slug}`}
-                                style={{ textDecoration: "none" }}
-                            >
-                                {group.name}
-                            </Link>
-                            <Typography variant="subtitle2">{group.description}</Typography>
-                        </Grid>
-                        <Divider variant="middle" sx={{ bgcolor: 'grey' }} />
-                    </div>
-                ))}
+                {
+                    relatedGroups.slice(0, 5).map((group) => (
+                        <div key={group.slug}>
+                            <Grid direction={"column"}>
+                                <Link
+                                    to={`/group/${group.slug}`}
+                                    style={{ textDecoration: "none" }}
+                                >
+                                    {group.name}
+                                </Link>
+                                <Typography variant="subtitle2">{group.description}</Typography>
+                            </Grid>
+                            <Divider variant="middle" sx={{ bgcolor: 'grey' }} />
+                        </div>
+                    ))
+                }
             </>
-        </Card>
+        </Card >
     );
 }
 

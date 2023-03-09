@@ -1,6 +1,7 @@
-import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Typography } from "@mui/material";
+
+import logo from "../../assets/images/logo.png";
 
 function LandingHeader() {
     return (
@@ -11,7 +12,7 @@ function LandingHeader() {
             alignItems={"center"}
             direction="column"
         >
-            <img src="/images/logo.png" alt="logo" height={130} />
+            <img src={logo} alt="logo" height={130} />
             <Typography textAlign={"center"} variant="h3" component={"h1"}>
                 گروه یاب
             </Typography>

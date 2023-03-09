@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { toast } from 'react-hot-toast';
-import Grid from '@mui/material/Unstable_Grid2';
+import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
+import Grid from "@mui/material/Unstable_Grid2";
 
 import {
     getRelatedGroups,
@@ -9,10 +10,10 @@ import {
     getGroupCommnets,
     addNewComment,
 } from "./../../services/service";
-
 import RelatedGroups from "./RelatedGroups";
-import GroupInfo from "./GroupInfo";
+import GroupInfo from "./GroupInfo"
 import GroupMoreInfo from "./GroupMoreInfo";
+
 
 function GroupPage() {
     const { groupSlug } = useParams();
@@ -33,7 +34,7 @@ function GroupPage() {
                 setRelatedGroups(relatedGroupsData);
             } catch (error) {
                 console.log(error.message);
-                toast.error("دریافت اطلاعات با خطا مواجه شد، مجدد تلاش کنید.")
+                toast.error("دریافت اطلاعات با خطا مواجه شد، مجدد تلاش کنید.");
             }
         };
 
@@ -54,13 +55,12 @@ function GroupPage() {
             const { status } = await addNewComment(commentData);
 
             if (status === 201) {
-                toast.success("نظر شما با موفقیت ثبت شد.")
+                toast.success("نظر شما با موفقیت ثبت شد.");
                 clearCommentFields(event);
             }
-
         } catch (error) {
             console.log(error.message);
-            toast.error("متاسفانه ثبت نظر شما با خطا مواجه شد.")
+            toast.error("متاسفانه ثبت نظر شما با خطا مواجه شد.");
         }
     };
 
@@ -68,22 +68,28 @@ function GroupPage() {
         event.target.fullname.value = "";
         event.target.email.value = "";
         event.target.message.value = "";
-    }
+    };
 
     return (
-        <Grid container spacing={3} direction={"row"} sx={{ mt: 4 }}>
-            <Grid xs={12} lg={9} >
-                <GroupInfo group={group} />
-                <GroupMoreInfo
-                    group={group}
-                    comments={comments}
-                    handleSubmitCommentForm={handleSubmitCommentForm}
-                />
+        <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{`${group.name} - ${global.name}`}</title>
+            </Helmet>
+            <Grid container spacing={2} direction={"row"} sx={{ mt: 4 }}>
+                <Grid xs={12} lg={9}>
+                    <GroupInfo group={group} />
+                    <GroupMoreInfo
+                        group={group}
+                        comments={comments}
+                        handleSubmitCommentForm={handleSubmitCommentForm}
+                    />
+                </Grid>
+                <Grid xs={12} lg={3}>
+                    <RelatedGroups relatedGroups={relatedGroups} />
+                </Grid>
             </Grid>
-            <Grid xs={12} lg={3}>
-                <RelatedGroups relatedGroups={relatedGroups} />
-            </Grid>
-        </Grid>
+        </div>
     );
 }
 

@@ -1,11 +1,7 @@
 import { isEmpty } from "lodash";
-import Grid from "@mui/material/Unstable_Grid2";
 import {
     Box,
     Divider,
-    Button,
-    TextField,
-    Paper,
     Typography,
 } from "@mui/material";
 
@@ -13,8 +9,17 @@ import GroupComment from "./GroupComment";
 import AddComment from "./AddComment";
 
 function GroupComments({ comments, handleSubmitCommentForm }) {
+
+    /*     const comments = [
+            {
+                name: "پوریا اقدم پور",
+                message: 'salam',
+                createdAt: '22-11-2022'
+            }
+        ] */
+
     return (
-        <div>
+        <Box sx={{ my: 2 }}>
             <AddComment handleSubmitCommentForm={handleSubmitCommentForm} />
             <Divider sx={{ my: 2 }} />
             {isEmpty(comments) ? (
@@ -28,7 +33,7 @@ function GroupComments({ comments, handleSubmitCommentForm }) {
                     </article>
                 ))
             )}
-        </div>
+        </Box>
     );
 }
 

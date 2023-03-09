@@ -176,7 +176,7 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                                     variant="outlined"
                                 /></Grid>
                             <Grid xs={12}>  {" "}
-                                <div className="d-flex">
+                                <Box sx={{ display: 'flex' }} >
                                     <IconButton color="primary" aria-label="upload picture" component="label">
                                         <input hidden name="image-file" accept="image/*" type="file" onChange={handleChangeImage} />
                                         <PhotoCamera />
@@ -193,7 +193,7 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                                         fullWidth
                                         variant="outlined"
                                     />
-                                </div>
+                                </Box>
                             </Grid>
                         </Grid>
                     </DialogContent>
@@ -202,10 +202,6 @@ function AddGroupForm({ handleClose, setOpen, open }) {
                         <Button
                             variant="contained"
                             type="submit"
-                        /*  onClick={() => {
-                             toast("درحال تکمیل سایت هستیم...", { icon: "🚀" });
-                             handleClose();
-                         }} */
                         >
                             ثبت گروه
                         </Button>
