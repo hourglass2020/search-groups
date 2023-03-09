@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { HelmetProvider, Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 
 import { Container } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
@@ -22,16 +22,14 @@ function MainLayout() {
     return (
         <CacheProvider value={cacheRTL}>
             <ThemeProvider theme={theme}>
-                <HelmetProvider>
-                    <Helmet>
-                        <title>گروه یاب</title>
-                    </Helmet>
-                    <HeaderNav />
-                    <Container sx={{ mt: 7 }}>
-                        <Outlet />
-                    </Container>
-                    <NavDrawer />
-                </HelmetProvider>
+                <Helmet>
+                    <title>گروه یاب</title>
+                </Helmet>
+                <HeaderNav />
+                <Container sx={{ mt: 7 }}>
+                    <Outlet />
+                </Container>
+                <NavDrawer />
             </ThemeProvider>
         </CacheProvider>
     );

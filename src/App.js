@@ -19,6 +19,7 @@ import { GroupContext } from "./context/groupContext";
 
 import "./App.css";
 import { Toaster } from "react-hot-toast";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [formShow, setFormShow] = useState(false)
   const [pageCount, setPageCount] = useState(1);
+  const [lastPage, setLastPage] = useState(0);
 
 
   useEffect(() => {
@@ -61,6 +63,7 @@ function App() {
         const { data: groupData } = await getAllGroups(pageCount);
         const { data: tagsData } = await getAllTags();
 
+        setLastPage(groupData.meta.last_page);
         setGroups(groupData.data);
         setFilteredGroups(groupData.data);
         setTags(tagsData);
@@ -139,10 +142,13 @@ function App() {
           handleClickOpenForm,
           handleCloseForm,
           pageCount,
-          setPageCount
+          setPageCount,
+          lastPage
         }}
       >
-        <RouterProvider router={router} />
+        <HelmetProvider >
+          <RouterProvider router={router} />
+        </HelmetProvider>
       </GroupContext.Provider>
     </div>
   );

@@ -18,5 +18,6 @@ export const GroupContext = createContext({
     formShow: {},
     setFormShow: () => { },
     pageCount: {},
-    setPageCount: () => { }
+    setPageCount: () => { },
+    lastPage: 0
 });

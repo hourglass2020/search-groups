@@ -26,10 +26,11 @@ function SearchPage() {
         handleSelect,
         setPageCount,
         pageCount,
+        lastPage
     } = useContext(GroupContext);
 
     return (
-        <Grid container sx={{ my: 10 }} spacing={3}>
+        <Grid container sx={{ my: 5 }} spacing={3}>
             <Grid xs={12} md={3} sx={{ mt: 3 }}>
                 <CategoriesColumn
                     tags={tags}
@@ -84,7 +85,7 @@ function SearchPage() {
                 {isEmpty(filteredGroups) ? null : (
                     <Pagination
                         sx={{ my: 4 }}
-                        count={4}
+                        count={lastPage}
                         page={pageCount}
                         onChange={(event, value) => setPageCount(value)}
                         color="primary"

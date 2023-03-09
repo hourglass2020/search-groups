@@ -13,6 +13,7 @@ import {
 import RelatedGroups from "./RelatedGroups";
 import GroupInfo from "./GroupInfo"
 import GroupMoreInfo from "./GroupMoreInfo";
+import { stripTags } from "../../services/helpers";
 
 
 function GroupPage() {
@@ -73,8 +74,9 @@ function GroupPage() {
     return (
         <div>
             <Helmet>
+                <title>{group.title}</title>
                 <meta charSet="utf-8" />
-                <title>{`${group.name} - ${global.name}`}</title>
+                <meta name="description" content={group.description} data-rh="true" />
             </Helmet>
             <Grid container spacing={2} direction={"row"} sx={{ mt: 4 }}>
                 <Grid xs={12} lg={9}>
