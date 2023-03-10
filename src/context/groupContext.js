@@ -7,8 +7,6 @@ export const GroupContext = createContext({
     setTags: () => { },
     selectedTags: [],
     setSelectedTags: () => { },
-    // filteredGroups: [],
-    // setFilteredGroups: () => { },
     groupSearch: () => { },
     handleSelect: () => { },
     setDrawerOpen: () => { },
