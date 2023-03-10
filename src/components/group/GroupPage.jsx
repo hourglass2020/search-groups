@@ -11,8 +11,9 @@ import {
     addNewComment,
 } from "./../../services/service";
 import RelatedGroups from "./RelatedGroups";
-import GroupInfo from "./GroupInfo"
+import GroupInfo from "./GroupInfo";
 import GroupMoreInfo from "./GroupMoreInfo";
+import { stripTags } from "../../services/helpers";
 
 function GroupPage() {
     const { groupSlug } = useParams();
@@ -74,7 +75,11 @@ function GroupPage() {
             <Helmet>
                 <title>{group.title}</title>
                 <meta charSet="utf-8" />
-                <meta name="description" content={group.description} data-rh="true" />
+                <meta
+                    name="description"
+                    content={stripTags("".concat(group.description))}
+                    data-rh="true"
+                />
             </Helmet>
             <Grid container spacing={2} direction={"row"} sx={{ mt: 4 }}>
                 <Grid xs={12} lg={9}>
