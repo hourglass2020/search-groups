@@ -8,9 +8,10 @@ global.name = "گروه یاب";
 
 // @desc Get All Groups
 // @route GET %SERVER_URL%/groups
-export const getAllGroups = (page) => {
+export const getAllGroups = (page, query, tags) => {
+    const tagstr = tags.map(t => t.slug).join(",");
     const currentPage = page ? page : 1;
-    const url = `${SERVER_URL}/groups?page=${currentPage}`;
+    const url = `${SERVER_URL}/groups?page=${currentPage}&search=${query}&tag=${tagstr}`;
     return axios.get(url);
 }
 

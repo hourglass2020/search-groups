@@ -7,8 +7,8 @@ export const GroupContext = createContext({
     setTags: () => { },
     selectedTags: [],
     setSelectedTags: () => { },
-    filteredGroups: [],
-    setFilteredGroups: () => { },
+    // filteredGroups: [],
+    // setFilteredGroups: () => { },
     groupSearch: () => { },
     handleSelect: () => { },
     setDrawerOpen: () => { },
@@ -19,5 +19,7 @@ export const GroupContext = createContext({
     setFormShow: () => { },
     pageCount: {},
     setPageCount: () => { },
-    lastPage: 0
+    lastPage: 0,
+    query: "",
+    setQuery: () => { }
 });

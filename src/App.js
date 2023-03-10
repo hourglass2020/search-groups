@@ -48,24 +48,24 @@ const router = createBrowserRouter([
 
 function App() {
   const [groups, setGroups] = useState([]);
-  const [filteredGroups, setFilteredGroups] = useImmer([]);
+  // const [filteredGroups, setFilteredGroups] = useImmer([]);
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useImmer([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [formShow, setFormShow] = useState(false)
   const [pageCount, setPageCount] = useState(1);
   const [lastPage, setLastPage] = useState(0);
-
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: groupData } = await getAllGroups(pageCount);
+        const { data: groupData } = await getAllGroups(pageCount, query, selectedTags);
         const { data: tagsData } = await getAllTags();
 
         setLastPage(groupData.meta.last_page);
         setGroups(groupData.data);
-        setFilteredGroups(groupData.data);
+        // setFilteredGroups(groupData.data);
         setTags(tagsData);
       } catch (error) {
         console.log(error.message);
@@ -73,16 +73,18 @@ function App() {
     };
 
     fetchData();
-  }, [pageCount]);
+  }, [pageCount, query, selectedTags]);
 
-  const groupSearch = debounce((query) => {
-    if (!query) return setFilteredGroups([...groups]);
+  const groupSearch = debounce((searchQuery) => {
+    setQuery(searchQuery);
 
-    setFilteredGroups((draft) =>
-      draft.filter((group) => {
-        return group.name.toLowerCase().includes(query.toLowerCase());
-      })
-    );
+    // if (!query) return setFilteredGroups([...groups]);
+
+    /*  setFilteredGroups((draft) =>
+       draft.filter((group) => {
+         return group.name.toLowerCase().includes(query.toLowerCase());
+       })
+     ); */
   }, 1000);
 
   const handleSelect = (checked, tag) => {
@@ -95,22 +97,22 @@ function App() {
         })
       );
     }
+
+    console.log(selectedTags)
   };
 
-  useEffect(() => {
-    if (!isEmpty(selectedTags)) {
-      setFilteredGroups(
-        groups.filter((group) => {
-          // console.log(intersectionBy(group.tags, selectedTags, "name"));
-          return intersectionBy(group.tags, selectedTags, "name").length !== 0;
-        })
-      );
-    } else {
-      setFilteredGroups(groups);
-    }
-  }, [selectedTags]);
-
-
+  /*   useEffect(() => {
+      if (!isEmpty(selectedTags)) {
+        setFilteredGroups(
+          groups.filter((group) => {
+            // console.log(intersectionBy(group.tags, selectedTags, "name"));
+            return intersectionBy(group.tags, selectedTags, "name").length !== 0;
+          })
+        );
+      } else {
+        setFilteredGroups(groups);
+      }
+    }, [selectedTags]); */
 
   const handleClickOpenForm = () => {
     setFormShow(true);
@@ -131,8 +133,8 @@ function App() {
           setTags,
           selectedTags,
           setSelectedTags,
-          filteredGroups,
-          setFilteredGroups,
+          // filteredGroups,
+          // setFilteredGroups,
           groupSearch,
           handleSelect,
           setDrawerOpen,
@@ -143,7 +145,9 @@ function App() {
           handleCloseForm,
           pageCount,
           setPageCount,
-          lastPage
+          lastPage,
+          query,
+          setQuery
         }}
       >
         <HelmetProvider >

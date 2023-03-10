@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
     Accordion,
     AccordionDetails,
@@ -11,7 +12,13 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect }) {
+import { GroupContext } from "../../context/groupContext";
+
+function CategoriesColumn() {
+    const {
+        tags,
+        handleSelect,
+    } = useContext(GroupContext);
 
     return (
         <div>
@@ -29,7 +36,6 @@ function CategoriesColumn({ tags, setSelectedTags, selectedTags, handleSelect })
                                     <FormControlLabel
                                         control={
                                             <Checkbox
-                                                checked={selectedTags.includes(tag)}
                                                 onChange={(event) =>
                                                     handleSelect(event.target.checked, tag)
                                                 }

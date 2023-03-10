@@ -13,8 +13,6 @@ import {
 import RelatedGroups from "./RelatedGroups";
 import GroupInfo from "./GroupInfo"
 import GroupMoreInfo from "./GroupMoreInfo";
-import { stripTags } from "../../services/helpers";
-
 
 function GroupPage() {
     const { groupSlug } = useParams();
