@@ -3,8 +3,6 @@ import { useImmer } from "use-immer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   debounce,
-  intersectionBy,
-  isEmpty,
 } from "lodash";
 
 import { getAllGroups, getAllTags } from "./services/service";
@@ -48,7 +46,6 @@ const router = createBrowserRouter([
 
 function App() {
   const [groups, setGroups] = useState([]);
-  // const [filteredGroups, setFilteredGroups] = useImmer([]);
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useImmer([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -65,7 +62,6 @@ function App() {
 
         setLastPage(groupData.meta.last_page);
         setGroups(groupData.data);
-        // setFilteredGroups(groupData.data);
         setTags(tagsData);
       } catch (error) {
         console.log(error.message);
@@ -77,14 +73,6 @@ function App() {
 
   const groupSearch = debounce((searchQuery) => {
     setQuery(searchQuery);
-
-    // if (!query) return setFilteredGroups([...groups]);
-
-    /*  setFilteredGroups((draft) =>
-       draft.filter((group) => {
-         return group.name.toLowerCase().includes(query.toLowerCase());
-       })
-     ); */
   }, 1000);
 
   const handleSelect = (checked, tag) => {
@@ -97,22 +85,7 @@ function App() {
         })
       );
     }
-
-    console.log(selectedTags)
   };
-
-  /*   useEffect(() => {
-      if (!isEmpty(selectedTags)) {
-        setFilteredGroups(
-          groups.filter((group) => {
-            // console.log(intersectionBy(group.tags, selectedTags, "name"));
-            return intersectionBy(group.tags, selectedTags, "name").length !== 0;
-          })
-        );
-      } else {
-        setFilteredGroups(groups);
-      }
-    }, [selectedTags]); */
 
   const handleClickOpenForm = () => {
     setFormShow(true);
@@ -133,8 +106,6 @@ function App() {
           setTags,
           selectedTags,
           setSelectedTags,
-          // filteredGroups,
-          // setFilteredGroups,
           groupSearch,
           handleSelect,
           setDrawerOpen,
